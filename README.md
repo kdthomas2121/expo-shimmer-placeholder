@@ -39,7 +39,7 @@ import { createShimmerPlaceHolder } from 'expo-shimmer-placeholder'
 import { LinearGradient } from 'expo-linear-gradient'
 const ShimmerPlaceHolder = createShimmerPlaceHolder(LinearGradient)
 
-<ShimmerPlaceHolder />
+
 <ShimmerPlaceHolder visible={isFetched}>
   <Text>
     Wow, awesome here.
