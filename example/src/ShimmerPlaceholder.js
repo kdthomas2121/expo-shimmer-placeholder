@@ -3,7 +3,7 @@ import { Animated, Platform, StyleSheet, View } from "react-native";
 
 const getOutputRange = (width, isReversed) => isReversed ? [width, -width] : [-width, width]
 
-class ShimmerPlaceholder extends PureComponent {
+class ShimmerPlaceHolder extends PureComponent {
   state = {
     beginShimmerPosition: new Animated.Value(-1)
   }
@@ -21,18 +21,18 @@ class ShimmerPlaceholder extends PureComponent {
 
   render() {
     return (
-      <BasedShimmerPlaceholder {...this.props} animatedValue={this.animatedValue} beginShimmerPosition={this.state.beginShimmerPosition} />
+      <BasedShimmerPlaceHolder {...this.props} animatedValue={this.animatedValue} beginShimmerPosition={this.state.beginShimmerPosition} />
     )
   }
 }
 
-ShimmerPlaceholder.defaultProps = {
+ShimmerPlaceHolder.defaultProps = {
   delay: 0,
   duration: 1000,
   isInteraction: true
 }
 
-const BasedShimmerPlaceholder = (props) => {
+const BasedShimmerPlaceHolder = (props) => {
   const {
     width = 200,
     height = 15,
@@ -120,24 +120,8 @@ const styles = StyleSheet.create({
 
 });
 
-/**
- * To create ShimmerPlaceholder by Linear Gradient. Only useful when you use 3rd party,
- * For example: react-native-linear-gradient
- * @param {Linear Gradient Component} LinearGradient - 'expo-linear-gradient' by default
- *
- * @example
- *
- * import LinearGradient from 'react-native-linear-gradient';
- * import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
- *
- * const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
- *
- * ...
- *
- * <ShimmerPlaceHolder />
- */
-export const createShimmerPlaceholder = (LinearGradient = global.Expo
+export const createShimmerPlaceHolder = (LinearGradient = global.Expo
   ? global.Expo.LinearGradient
-  : View) => React.forwardRef((props, ref) => <ShimmerPlaceholder LinearGradient={LinearGradient} ref={ref} {...props} />)
+  : View) => React.forwardRef((props, ref) => <ShimmerPlaceHolder LinearGradient={LinearGradient} ref={ref} {...props} />)
 
-export default ShimmerPlaceholder
+export default ShimmerPlaceHolder

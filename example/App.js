@@ -3,7 +3,7 @@
 import React, { PureComponent, Component } from 'react';
 import { View, Text, StyleSheet, Animated, Image, ScrollView, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import ShimmerPlaceholder from './src/ShimmerPlaceholder'
+import ShimmerPlaceHolder from './src/ShimmerPlaceHolder'
 
 const FacebookContent = ({ isReversed, shimmerColors, hasData, hasBorder, randomWidth }) => {
   // Handle visible
@@ -33,7 +33,7 @@ const FacebookContent = ({ isReversed, shimmerColors, hasData, hasBorder, random
   return (
     <View>
       <View style={{ flexDirection: "row" }}>
-        <ShimmerPlaceholder
+        <ShimmerPlaceHolder
           width={80} height={80}
           style={{ marginRight: 10 }}
           ref={avatarRef}
@@ -48,9 +48,9 @@ const FacebookContent = ({ isReversed, shimmerColors, hasData, hasBorder, random
             source={{ uri: 'https://unsplash.it/1000/1000' }}
             onLoadEnd={() => setAvatarVisible(true)}
           />}
-        </ShimmerPlaceholder>
+        </ShimmerPlaceHolder>
         <View style={{ justifyContent: "space-between" }}>
-          <ShimmerPlaceholder
+          <ShimmerPlaceHolder
             width={randomWidth ? 250 : 200}
             style={{}}
             ref={firstLineRef}
@@ -63,8 +63,8 @@ const FacebookContent = ({ isReversed, shimmerColors, hasData, hasBorder, random
             <Text style={{ flex: 1, flexWrap: 'wrap', width: 200 }}>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
              </Text>
-          </ShimmerPlaceholder>
-          <ShimmerPlaceholder
+          </ShimmerPlaceHolder>
+          <ShimmerPlaceHolder
             width={randomWidth ? 150 : 200}
             ref={secondLineRef}
             isReversed={isReversed}
@@ -73,7 +73,7 @@ const FacebookContent = ({ isReversed, shimmerColors, hasData, hasBorder, random
             stopAutoRun
             visible={visible}
           />
-          <ShimmerPlaceholder
+          <ShimmerPlaceHolder
             width={200}
             ref={thirdLineRef}
             isReversed={isReversed}
@@ -102,11 +102,11 @@ export default () => {
     <ScrollView style={styles.container} contentInset={{ bottom: 150 }}>
       <Text style={styles.title}> React Native Shimmer Placeholder </Text>
       <Text style={styles.sessionTitle}>Simple</Text>
-      <ShimmerPlaceholder
+      <ShimmerPlaceHolder
         shimmerStyle={{ borderRadius: 10 }}
       />
       <Text style={styles.sessionTitle}>Avatar</Text>
-      <ShimmerPlaceholder
+      <ShimmerPlaceHolder
         width={150}
         height={150}
         shimmerStyle={{ borderRadius: 100 }}
@@ -117,9 +117,9 @@ export default () => {
           source={{ uri: 'https://unsplash.it/1000/1000' }}
           onLoadEnd={() => setAvatarVisible(true)}
         />
-      </ShimmerPlaceholder>
+      </ShimmerPlaceHolder>
       <Text style={styles.sessionTitle}>Load text data</Text>
-      <ShimmerPlaceholder
+      <ShimmerPlaceHolder
         shimmerStyle={{ borderRadius: 10 }}
         visible={visible}
         width={350}
@@ -127,13 +127,13 @@ export default () => {
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
         </Text>
-      </ShimmerPlaceholder>
-      <ShimmerPlaceholder
+      </ShimmerPlaceHolder>
+      <ShimmerPlaceHolder
         shimmerStyle={{ borderRadius: 10, marginTop: 2 }}
         width={150}
         visible={visible}
       />
-      <ShimmerPlaceholder
+      <ShimmerPlaceHolder
         shimmerStyle={{ borderRadius: 10, marginTop: 2 }}
         width={250}
         visible={visible}

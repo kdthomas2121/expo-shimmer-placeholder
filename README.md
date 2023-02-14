@@ -1,10 +1,10 @@
 
 <h2 align="center">
-  React Native Shimmer Placeholder
+  Expo Shimmer Placeholder
 </h2>
 <p align="center">
-  <a href="https://www.npmjs.com/package/react-native-shimmer-placeholder"><img src="https://img.shields.io/npm/v/react-native-shimmer-placeholder.svg?style=flat-square"></a>
-  <a href="https://www.npmjs.com/package/react-native-shimmer-placeholder"><img src="https://img.shields.io/npm/dm/react-native-shimmer-placeholder.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/expo-shimmer-placeholder"><img src="https://img.shields.io/npm/v/react-native-shimmer-placeholder.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/expo-shimmer-placeholder"><img src="https://img.shields.io/npm/dm/react-native-shimmer-placeholder.svg?style=flat-square"></a>
   <a href="https://packagephobia.now.sh/badge?p=react-native-shimmer-placeholder@1.0.29"><img src="https://packagephobia.now.sh/badge?p=react-native-shimmer-placeholder@1.0.29"></a>
 </p>
 <h5 align="center">
@@ -19,27 +19,25 @@ Placeholder for both IOS and Android
 </p> -->
 
 ## Get Started
-![install size](https://packagephobia.now.sh/badge?p=react-native-shimmer-placeholder@1.0.29)
+
+Fork of https://www.npmjs.com/package/react-native-shimmer-loading to only require expo-linear-gradient as react-native-linear-gradient was causing issues
 
 ### Installation
 
-`npm i react-native-shimmer-placeholder --save`
+`npm i expo-shimmer-placeholder --save`
 
 or
 
-`yarn add react-native-shimmer-placeholder`
+`yarn add expo-shimmer-placeholder`
 
 
 ### Usage
 
 #### Simple
-
-For `expo`
 ``` jsx
-import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
-import LinearGradient from 'expo-linear-gradient';
-
-const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
+import { createShimmerPlaceHolder } from 'expo-shimmer-placeholder'
+import { LinearGradient } from 'expo-linear-gradient'
+const ShimmerPlaceHolder = createShimmerPlaceHolder(LinearGradient)
 
 <ShimmerPlaceHolder />
 <ShimmerPlaceHolder visible={isFetched}>
@@ -49,104 +47,12 @@ const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 </ShimmerPlaceHolder>
 ```
 
-or 
-
-``` jsx
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
-import LinearGradient from 'expo-linear-gradient';
-
-
-<ShimmerPlaceHolder LinearGradient={Linear} />
-<ShimmerPlaceHolder visible={isFetched} LinearGradient={Linear}>
-  <Text>
-    Wow, awesome here.
-  </Text>
-</ShimmerPlaceHolder>
-```
-
-For `react-native-linear-gradient`
-``` jsx
-import LinearGradient from 'react-native-linear-gradient';
-import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
-
-const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
-
-...
-
-<ShimmerPlaceHolder />
-```
-or
-```jsx
-import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
-
-...
-
-<ShimmerPlaceHolder
-  LinearGradient={LinearGradient}
-/>
-```
-
 #### Connect more components
 
 <p align="center">
 <img src="https://github.com/tomzaku/react-native-shimmer-placeholder/blob/master/facebook-load-data.gif?raw=true">
 </p>
 
-```jsx
-import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
-import LinearGradient from 'react-native-linear-gradient';
-
-const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
-const FacebookContent = () => {
-
-  // Handle animation
-  const avatarRef = React.createRef()
-  const firstLineRef = React.createRef()
-  const secondLineRef = React.createRef()
-  const thirdLineRef = React.createRef()
-
-  React.useEffect(() => {
-    const facebookAnimated = Animated.stagger(
-      400,
-      [
-        avatarRef.current.getAnimated(),
-        Animated.parallel([
-          firstLineRef.current.getAnimated(),
-          secondLineRef.current.getAnimated(),
-          thirdLineRef.current.getAnimated()
-        ])
-      ]
-    );
-    Animated.loop(facebookAnimated).start();
-  }, [])
-
-  return (
-    <View>
-      <View style={{ flexDirection: "row" }}>
-        <ShimmerPlaceholder
-          ref={avatarRef}
-          stopAutoRun
-        />
-        <View style={{ justifyContent: "space-between" }}>
-          <ShimmerPlaceholder
-            ref={firstLineRef}
-            stopAutoRun
-          />
-          <ShimmerPlaceholder
-            ref={secondLineRef}
-            stopAutoRun
-          />
-          <ShimmerPlaceholder
-            ref={thirdLineRef}
-            stopAutoRun
-          />
-        </View>
-      </View>
-    </View>
-  )
-}
-```
 
 More Detail see [this](https://github.com/tomzaku/react-native-shimmer-placeholder/blob/master/example/App.js)
 
@@ -154,7 +60,7 @@ More Detail see [this](https://github.com/tomzaku/react-native-shimmer-placehold
 
 | Prop                         | Description                                                                                            | Type      | Default                                           |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------ | --------- | ------------------------------------------------- |
-| **`LinearGradient`**         | Linear Gradient components ('react-native-linear-gradient' or 'expo-linear-gradient')                  | Component | undefined                                         |
+| **`LinearGradient`**         | Linear Gradient components ('expo-linear-gradient')                                                    | Component | undefined                                         |
 | **`visible`**                | Visible child components                                                                               | boolean   | false                                             |
 | **`style`**                  | Container Style                                                                                        | Style     | `{backgroundColor: '#ebebeb',overflow: 'hidden'}` |
 | **`shimmerStyle`**           | Shimmer Style only                                                                                     | Style     | {}                                                |
@@ -179,26 +85,9 @@ More Detail see [this](https://github.com/tomzaku/react-native-shimmer-placehold
 
 ### Helpers
 
-`createShimmerPlaceholder`
+`createShimmerPlaceHolder`
 
-```
-/**
- * To create ShimmerPlaceholder by Linear Gradient. Only useful when you use 3rd party,
- * For example: react-native-linear-gradient
- * @param {Linear Gradient Component} LinearGradient - 'expo-linear-gradient' by default
- *
- * @example
- *
- * import LinearGradient from 'react-native-linear-gradient';
- * import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
- *
- * const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
- *
- * ...
- *
- * <ShimmerPlaceHolder />
- */
- ```
+
 
 ### Contribute
 
